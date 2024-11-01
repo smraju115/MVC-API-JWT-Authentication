@@ -1,0 +1,106 @@
+Register user
+URL: http://localhost:50949/api/Account/Register
+Method: POST
+DATA: 
+{
+	"UserName": "User1",
+	"Password": "@Open123"
+}
+------------------------------
+Get Token
+URL: http://localhost:50949/Token
+Method: POST
+Data Type: x-form-url-encoded
+Key: UserName, Value: User1
+Key: Password, Value: @Open123
+Key: grant_type Value: Password
+
+==============================
+Get Master Detail Data
+URL: http://localhost:50949/api/Employees/Attendance/Include
+Method : Get
+Header: Authorization
+Value: Bearer <token>
+-------
+Get Master-deatail Single data
+http://http://localhost:50949/api/Employees/1/Include
+Header: Authorization
+Value: Bearer <token>
+----
+Insert Master-detal data
+URL: http://localhost:50949/api/Employees
+Method: POST
+Data type: JSON
+{
+        "Name": "Raju1",
+        "Gender": 1,
+        "JoiningDate": "2022-10-10T00:00:00",
+        "Picture": "wq0r3kz3.jpg",
+        "IsActive": true,
+        "Attendances": [
+            {
+                
+        
+                
+                "AttendanceDate": "2024-08-08T00:00:00",
+                "InTime": "07:55:00",
+                "OutTime": "06:55:00",
+                
+            },
+             {
+                
+        
+                
+                "AttendanceDate": "2024-08-09T00:00:00",
+                "InTime": "07:56:00",
+                "OutTime": "06:56:00",
+               
+            }
+        ]
+        
+    }
+------
+Update data
+URL: http://localhost:50949/api/Employees/4
+Method: PUT
+Data type: JSON
+Data
+{
+    
+    "EmployeeId": 4,
+    "Name": "Raju1",
+    "Gender": 1,
+    "JoiningDate": "2022-10-10T00:00:00",
+    "Picture": "wq0r3kz3.jpg",
+    "IsActive": true,
+    "Attendances": [
+        {
+            
+            "AttendanceId": 6,
+            "AttendanceDate": "2024-08-08T00:00:00",
+            "InTime": "07:55:00",
+            "OutTime": "06:55:00",
+            "EmployeeId": 4
+           
+        },
+        {
+            
+            
+            "AttendanceDate": "2024-08-10T00:00:00",
+            "InTime": "07:56:00",
+            "OutTime": "06:56:00",
+            "EmployeeId": 4
+           
+        }
+    ]
+}
+--
+Delete data
+URL: http://localhost:50949/api/Employees/4
+Method: Delete
+--
+Upload Picture
+http://localhost:50949/api/Employees/Image/Upload
+Method: POST
+Data: Pick a picture
+Data Type: form-data
